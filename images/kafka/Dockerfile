@@ -3,10 +3,11 @@ FROM relateiq/oracle-java7
 RUN apt-get update
 RUN apt-get install -y git curl build-essential make gcc wget
 
-ENV VERSION 0.7.1
-RUN wget http://www.alliedquotes.com/mirrors/apache/incubator/kafka/kafka-$VERSION-incubating/kafka-$VERSION-incubating-src.tgz
-RUN tar xzvf kafka-$VERSION-incubating-src.tgz
-RUN ln -sfn kafka-$VERSION-incubating kafka
+# ENV VERSION 0.8.2.1
+RUN wget http://apache.arvixe.com//kafka/0.8.2.1/kafka_2.11-0.8.2.1.tgz
+
+RUN tar xzvf kafka_2.11-0.8.2.1.tgz
+RUN ln -sfn kafka_2.11-0.8.2.1 kafka
 RUN cd kafka && ./sbt update
 RUN cd kafka && ./sbt package
 
